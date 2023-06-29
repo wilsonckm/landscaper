@@ -1,0 +1,1 @@
+print("Landscaper user can use teeth to cut grass")
