@@ -48,14 +48,40 @@ tools = [
 
 # def buyTools():
 
-# def cutGrass():
+def cutGrass():
+    global money
+    for element in tools:
+        if element.own == True:
+            print("These are your options:(Type your selection)")
+            userCutGrass = input(f"{element.name}\n")
+            if userCutGrass == element.name:
+                money += element.pay
+                print(f"You cut with {element.name} and got paid {element.pay}. You now have {money} in total.")
+            else:
+                print("Not a selection. Try again.")
+
+def buyTools():
+    global money
+    for element in tools:
+        if element.own == False:
+            print("This is what you can buy:(Type your selection)")
+            userBuyTool = input(f"{element.name}\n")
+            if userBuyTool == element.name:
+                money -= element.cost
+                element.own == True
+                print(f"You bought {element.name} for {element.cost}. You now have {money} in total.")
+            else:
+                print("Not a selection. Try again.")
+
 
 # Run game
 def userChoice(choice):
     if choice == 'buy':
         print("What would you like to buy?")
+        buyTools()
     elif choice == 'cut':
         print("What would you like to cut with?")
+        cutGrass()
     else:
         print("Not an option, try again.")
 
